@@ -50,9 +50,9 @@ html, body {
     margin: 0 auto;
 }
 
-/* 2.1 -- specific for lander section */
+/*                      2.1 -- specific for lander section                      */
 
-/* 2.1.1 -- pretty svg */
+/*          2.1.1 -- pretty svg */
 
 svg {
     width: 80vw;
@@ -62,7 +62,7 @@ svg {
     text-align: center;
 }
 
-/* 2.1.2 -- scroll nudger */
+/*          2.1.2 -- scroll nudger */
 
 .scroll-down {
     position: absolute;
@@ -159,7 +159,7 @@ svg {
     }
 }
 
-/* 2.2 -- specific for stories section */
+/*                      2.2 -- specific for stories section */
 
 section {
     color: #ffffff;
@@ -181,7 +181,7 @@ section {
     font-display: swap;
 }
 
-/* section 2 - list of stories */
+/*                          section 2 - list of stories */
 #list {
     font-family: 'Perfecto Calligraphy', cursive;
     font-size: 6em;
@@ -240,7 +240,7 @@ a:not(:hover) {
     }
 }
 
-/* footer */
+/*                       3.1 -- specific for footer section */
 .footer-basic {
     padding: 20px 0;
     color: #201f1f;
@@ -280,4 +280,5 @@ a:not(:hover) {
 
 /* Credit to https://epicbootstrap.com/snippets/footer-basic */
 
-/* 3.1 -- stories page specific styles */
+/* 4.1 -- stories page specific styles */
+
