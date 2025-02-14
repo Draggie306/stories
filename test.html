@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stories</title>
+  <style>
+
+    /* 1.1 -- generic styles */
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #070707;
+      font-family: sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .container-landing {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      align-content: center;
+      flex-direction: row;
+      margin: 0 auto;
+    }
+
+    .container-stories-gen {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      align-content: center;
+      flex-direction: column;
+      margin: 0 auto;
+      border-top: 0.1em solid #3f3f3f;
+    }
+
+    /* 2.1 -- specific for lander section */
+
+    /* 2.1.1 -- pretty svg */
+
+    svg {
+      width: 80vw;
+      height: auto;
+      max-width: 1200px;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* 2.1.2 -- scroll nudger */
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.2em;
+      color: #fff;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    .scroll-down p {
+      font-size: 1.5em;
+      color: #414141;
+      text-align: center;
+    }
+    
+    /* note: taken from stackoverflow, not my own work: https://stackoverflow.com/a/46798839 */
+    #showMe {
+        opacity: 0;
+        -moz-animation: cssAnimation 17s;
+        /* Firefox */
+        -webkit-animation: cssAnimation 17s;
+        /* Safari and Chrome */
+        -o-animation: cssAnimation 17s;
+        /* Opera */
+        animation: cssAnimation 17s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+    }
+    @keyframes cssAnimation {
+        34% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes cssAnimation {
+        34% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* 2.2 -- specific for stories section */
+
+    section {
+      color: #ffffff;
+      align-items: center;
+    }
+
+    .story a {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      font-size: 1.5em;
+    }
+
+    @font-face {
+      font-family: 'Perfecto Calligraphy';
+      src: url('PerfectoCalligraphy.woff2') format('woff2'),
+           url('PerfectoCalligraphy.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* section 2 - list of stories */
+    #list {
+      font-family: 'Perfecto Calligraphy', cursive;
+      font-size: 6em;
+      text-align: center;
+    }
+    
+    h1 .story-title {
+      font-family: 'Perfecto Calligraphy', cursive;
+    }
+
+    h1 a {
+      font-family: 'Perfecto Calligraphy', cursive;
+      color: #929292;
+      text-decoration: underline;
+      font-size: 2em;
+    }
+
+    h1 a:hover {
+      color: #cfcfcf;
+      transition: 0.5s ease;
+    }
+
+    /* adding this prevents the user from seeing jarring changes to the text. */
+    a:not(:hover) {
+      color: #929292;
+      font-size: default;
+      transition: 0.5s ease;
+      display: inline-block;
+    }
+
+    .story-start-preview {
+      font-size: 0.9em;
+      text-align: center;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-style: italic;
+    }
+
+    .story-snippet {
+      text-align: center;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .drawn-path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw 15s forwards;
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* footer */
+    .footer-basic {
+      padding:20px 0;
+      color:#201f1f;
+      margin-top: 3px;
+      border-top: 0.1em solid #3f3f3f;
+    }
+    
+    .footer-basic .social {
+      text-align:center;
+      padding-bottom:10px;
+    }
+
+    .footer-basic .social > a {
+      font-size:24px;
+      width:40px;
+      height:40px;
+      line-height:40px;
+      display:inline-block;
+      text-align:center;
+      border-radius:50%;
+      margin:0 8px;
+      color:#ffffff;
+      opacity:0.75;
+    }
+
+    .footer-basic .social > a:hover {
+      opacity: 0.5;
+      transition: 0.7s ease;
+    }
+
+    .footer-basic .social > a svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+
+    /* Credit to https://epicbootstrap.com/snippets/footer-basic */
+
+
+  </style>
+</head>
+<body>
+  <section id="landing" class="container-landing">
+    <div>
+      <!-- Absolutely crazy custom paths -->
+      <svg viewBox="-10 60 300 200">
+        <path class="drawn-path" d="m 7.6317792,157.79297 -0.3487968,-0.34879 18.2869216,-15.29724 0.298968,0.49828 q -2.092781,1.69416 -2.690718,2.54124 -0.597938,0.84708 -0.597938,2.14261 0,1.04639 0.348797,3.23883 0.348797,2.14261 0.348797,3.93642 0,3.63745 -2.591062,6.72679 l 4.484531,-3.78693 0.348797,0.34879 q -11.211328,9.86597 -18.1872655,9.86597 -1.6941562,0 -2.9398593,-0.94673 -1.1958749,-0.99656 -1.1958749,-2.54124 0,-1.14604 0.7972499,-1.94329 0.7474219,-0.84708 1.7938125,-0.84708 0.6477656,0 1.0962187,0.44845 0.4982812,0.44845 0.4982812,1.04639 0,0.84708 -0.6975937,1.54467 -0.6477656,0.64777 -1.3951875,0.64777 -0.2989687,0 -0.7972499,-0.14948 0,2.19243 2.7903749,2.19243 3.9364216,0 8.8694056,-5.73023 4.982813,-5.73024 5.481094,-12.05841 0.199312,-2.04295 0.697594,-3.68728 z" style="animation-delay: 0s;" /> <!-- Example 's' path -->
+        <path class="drawn-path" d="m 25.520075,157.79297 -0.348796,-0.34879 13.702733,-11.21133 5.829891,-4.58419 h -4.534359 l 0.199312,-0.44845 h 5.032641 l 8.420952,-8.81958 4.235391,-0.0997 -8.121984,8.91924 h 7.17525 l -0.149485,0.44845 h -7.524046 l -17.190703,18.33675 q -3.089344,3.28866 -3.737109,4.13574 -0.597938,0.84707 -0.597938,1.5945 0,0.74742 0.597938,1.29553 0.647765,0.49828 1.345359,0.49828 4.085906,0 15.646031,-10.06528 l 0.348797,0.34879 q -12.008578,10.31443 -16.094484,10.31443 -1.295531,0 -2.242266,-1.0464 -0.896906,-1.09621 -0.896906,-2.54123 0,-3.73711 4.982812,-9.01889 l 10.164938,-10.56356 -0.199313,-0.14949 z" style="animation-delay: 1.7s;" />
+        <path class="drawn-path" d="m 67.575011,157.44418 0.348797,0.34879 q -1.843641,1.74399 -3.786937,1.74399 -1.5945,0 -2.690719,-1.14605 -3.687281,3.88659 -7.872843,6.52749 -4.185563,2.64089 -6.975938,2.64089 -1.445015,0 -2.441578,-1.04639 -0.996562,-1.0464 -0.996562,-2.89004 0,-4.23539 3.786937,-8.12198 3.786937,-3.93642 8.670094,-6.07903 4.932984,-2.19244 7.823015,-2.19244 2.840203,0 2.840203,2.69072 0,2.79038 -4.484531,8.02233 0.896906,1.09622 2.39175,1.09622 1.694156,0 3.388312,-1.5945 z m -1.743984,-7.67353 q 0,-0.94674 -0.747422,-1.54468 -0.697594,-0.59793 -1.5945,-0.59793 -3.786937,0 -11.460468,7.57387 -7.623703,7.57388 -7.623703,10.01545 0,0.6976 0.697594,1.29554 0.697593,0.5481 1.5945,0.5481 2.092781,0 5.979374,-2.1426 3.936422,-2.19244 6.876281,-5.28179 2.989688,-3.13917 4.634016,-5.58075 1.644328,-2.4914 1.644328,-4.28521 z"  style="animation-delay: 4.2s;" />
+        <path class="drawn-path" d="m 67.92381,157.79297 -0.348797,-0.34879 7.573874,-6.22852 q 1.793813,-1.44501 2.541235,-2.24226 -1.5945,-0.94674 -1.5945,-2.59107 0,-1.04639 0.697594,-1.84364 0.747421,-0.79725 1.644328,-0.79725 0.647765,0 1.146046,0.54811 0.54811,0.54811 0.54811,1.34536 0,0.79725 -0.54811,1.39519 -0.548109,0.54811 -1.345359,0.54811 -0.548109,0 -1.146047,-0.39863 -0.04983,0.19932 -0.04983,0.24914 0,0.44846 0.697594,0.89691 0.697594,0.44845 2.042953,0.44845 1.943297,0 4.185562,-0.99656 l 2.640891,2.93986 q -0.946735,1.84364 -3.936422,4.58419 -2.939859,2.69072 -5.879718,5.78006 -2.93986,3.03952 -3.338485,3.63745 -0.398625,0.59794 -0.398625,1.14605 0,1.39519 1.5945,1.39519 1.893469,0 5.879719,-2.19244 3.98625,-2.24227 10.164937,-7.6237 l 0.348797,0.34879 q -11.609953,10.01546 -16.493109,10.01546 -1.445016,0 -2.292094,-0.89691 -0.79725,-0.94673 -0.79725,-2.44158 0,-1.89347 1.195875,-3.78694 1.245703,-1.89346 5.281781,-5.82989 4.036078,-3.93642 5.58075,-5.87971 l -0.19931,-0.3488 q -2.092782,0.74742 -3.886594,0.74742 -0.498281,0 -1.046391,-0.14948 z"  style="animation-delay: 4.9s;" />
+        <path class="drawn-path" d="m 115.50967,137.86172 q 0,1.09622 -0.89691,1.84364 -0.89691,0.74743 -1.89347,0.74743 -0.69759,0 -1.19587,-0.49828 -0.49829,-0.54811 -0.49829,-1.29554 0,-0.94673 0.84708,-1.79381 0.84708,-0.84708 1.89347,-0.84708 0.74742,0 1.2457,0.54811 0.49829,0.54811 0.49829,1.29553 z m -24.465614,19.93125 -0.348796,-0.34879 q 2.441578,-2.09278 12.30755,-9.76632 h 4.83332 l -15.795511,15.54638 q -0.896906,0.89691 -1.195875,1.79381 v 0.3488 q 0,0.64776 0.498281,1.14605 0.498281,0.49828 1.245703,0.49828 1.5945,0 4.484531,-1.5945 2.939861,-1.64433 10.214761,-7.9725 l 0.3488,0.34879 q -11.11167,9.71649 -14.998264,9.71649 -1.245703,0 -2.042953,-0.79725 -0.747421,-0.79725 -0.747421,-2.14261 0,-1.89347 1.245703,-3.98625 1.295531,-2.14261 9.566995,-10.11511 l -0.0997,-0.24914 -4.584189,3.48797 z"  style="animation-delay: 5.9s;" />
+        <path class="drawn-path" d="m 127.46842,157.44418 0.34879,0.34879 q -5.97937,5.28178 -10.91236,7.67353 -4.93298,2.34193 -7.87284,2.34193 -4.08591,0 -4.08591,-4.18557 0,-5.63057 7.67353,-10.61339 7.72336,-4.98281 12.05841,-4.98281 0.79725,0 1.34536,0.44845 0.59794,0.44846 0.59794,1.09622 0,2.44158 -4.83333,5.1323 -4.83333,2.69072 -10.71305,3.33848 -5.08247,5.08247 -5.08247,6.97594 0,0.89691 0.89691,1.69416 0.89691,0.74742 2.09278,0.74742 2.59106,0 7.32474,-2.24227 4.7835,-2.29209 11.1615,-7.77318 z m -15.64604,0 q 1.49485,0 5.28179,-1.29553 3.78693,-1.29554 6.27834,-3.33849 2.54123,-2.04295 2.54123,-3.38831 0,-0.94674 -1.09622,-0.94674 -1.29553,0 -2.89003,0.79725 -1.54467,0.79725 -4.73367,3.28866 -3.189,2.44158 -5.38144,4.88316 z"  style="animation-delay: 7.5s;" />
+        <path class="drawn-path" d="m 127.76738,157.79297 -0.34879,-0.34879 18.28692,-15.29724 0.29897,0.49828 q -2.09278,1.69416 -2.69072,2.54124 -0.59794,0.84708 -0.59794,2.14261 0,1.04639 0.3488,3.23883 0.34879,2.14261 0.34879,3.93642 0,3.63745 -2.59106,6.72679 l 4.48453,-3.78693 0.3488,0.34879 q -11.21133,9.86597 -18.18726,9.86597 -1.69416,0 -2.93986,-0.94673 -1.19588,-0.99656 -1.19588,-2.54124 0,-1.14604 0.79725,-1.94329 0.74742,-0.84708 1.79381,-0.84708 0.64777,0 1.09622,0.44845 0.49828,0.44845 0.49828,1.04639 0,0.84708 -0.69759,1.54467 -0.64777,0.64777 -1.39519,0.64777 -0.29897,0 -0.79725,-0.14948 0,2.19243 2.79038,2.19243 3.93642,0 8.8694,-5.73023 4.98282,-5.73024 5.4811,-12.05841 0.19931,-2.04295 0.69759,-3.68728 z"  style="animation-delay: 9.2s;" />
+      </svg>
+
+      <!-- fine-tuned delays and appearance -->
+      <div class="scroll-down" onclick="document.getElementById('stories').scrollIntoView();" style="animation-delay: 12.7s;">
+        <p id='showMe'>↓ scroll down ↓</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="stories" class="container-stories-gen">
+
+    <h1 id="list">most recent</h1>
+
+    <div class="container-stories-gen story">
+      <div>
+        <h1 class="story-title"><a href="stories/caius.html">morning at Caius</h1></a>
+      </div>
+      <div class="story-snippet">
+        <p class="story-start-preview">I woke up from my deep slumber from the buzzing alarm, warning me of the impending 9am supervision, after a hard day's revision in the Caius Library. My limbs felt like lead and my mind was still foggy from the late night ...</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="footer-basic">
+    <footer>
+      <div class="social">
+        <a href="https://github.com/draggie306/stories" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+          </svg>
+        </a>
+        <a href="https://discord.com/invite/GfetCXH" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 23 23">
+            <path d="M18.8943 4.34399C17.5183 3.71467 16.057 3.256 14.5317 3C14.3396 3.33067 14.1263 3.77866 13.977 4.13067C12.3546 3.89599 10.7439 3.89599 9.14391 4.13067C8.99457 3.77866 8.77056 3.33067 8.58922 3C7.05325 3.256 5.59191 3.71467 4.22552 4.34399C1.46286 8.41865 0.716188 12.3973 1.08952 16.3226C2.92418 17.6559 4.69486 18.4666 6.4346 19C6.86126 18.424 7.24527 17.8053 7.57594 17.1546C6.9466 16.92 6.34927 16.632 5.77327 16.2906C5.9226 16.184 6.07194 16.0667 6.21061 15.9493C9.68793 17.5387 13.4543 17.5387 16.889 15.9493C17.0383 16.0667 17.177 16.184 17.3263 16.2906C16.7503 16.632 16.153 16.92 15.5236 17.1546C15.8543 17.8053 16.2383 18.424 16.665 19C18.4036 18.4666 20.185 17.6559 22.01 16.3226C22.4687 11.7787 21.2836 7.83202 18.8943 4.34399ZM8.05593 13.9013C7.01058 13.9013 6.15725 12.952 6.15725 11.7893C6.15725 10.6267 6.98925 9.67731 8.05593 9.67731C9.11191 9.67731 9.97588 10.6267 9.95454 11.7893C9.95454 12.952 9.11191 13.9013 8.05593 13.9013ZM15.065 13.9013C14.0196 13.9013 13.1652 12.952 13.1652 11.7893C13.1652 10.6267 13.9983 9.67731 15.065 9.67731C16.121 9.67731 16.985 10.6267 16.9636 11.7893C16.9636 12.952 16.1317 13.9013 15.065 13.9013Z"/>
+          </svg>
+        </a>
+
+      </div>
+      <p style="color: #929292; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-align: center; font-size: x-small; font-style: italic;">© MMXXV - by draggie306</p>
+    </footer>
+  </div>
+</body>
+</html>

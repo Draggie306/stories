@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Perfecto Calligraphy - Personal use';
+    src: local('Perfecto Calligraphy - Personal use'), local('PerfectoCalligraphyPersonaluse'),
+        url('PerfectoCalligraphyPersonaluse.woff2') format('woff2'),
+        url('PerfectoCalligraphyPersonaluse.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
