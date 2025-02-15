@@ -101,35 +101,15 @@ svg {
 /* note: taken from stackoverflow, not my own work: https://stackoverflow.com/a/46798839 */
 #showMe {
     opacity: 0;
-    -moz-animation: cssAnimation 17s;
+    -moz-animation: reveal-animation 17s;
     /* Firefox */
-    -webkit-animation: cssAnimation 17s;
+    -webkit-animation: reveal-animation 17s;
     /* Safari and Chrome */
-    -o-animation: cssAnimation 17s;
+    -o-animation: reveal-animation 17s;
     /* Opera */
-    animation: cssAnimation 17s;
+    animation: reveal-animation 17s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-}
-
-@keyframes cssAnimation {
-    34% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes cssAnimation {
-    34% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
 }
 
 .sparkle {
@@ -346,14 +326,44 @@ a:not(:hover) {
 */
 .reveal {
     opacity: 0;
-    -webkit-animation: cssAnimation var(--duration, 1s) forwards;
-    -moz-animation: cssAnimation var(--duration, 1s) forwards;
-    -o-animation: cssAnimation var(--duration, 1s) forwards;
-    animation: cssAnimation var(--duration, 1s) forwards;
+    -webkit-animation: reveal-animation var(--duration, 1s) forwards;
+    -moz-animation: reveal-animation var(--duration, 1s) forwards;
+    -o-animation: reveal-animation var(--duration, 1s) forwards;
+    animation: reveal-animation var(--duration, 1s) forwards;
 }
 
-@keyframes cssAnimation {
-    34% {
+@keyframes reveal-animation {
+    14% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-20%);
+    }
+}
+
+@-webkit-keyframes reveal-animation {
+    14% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-20%);
+    }
+}
+
+
+/* to make some elements, e.g. footer, not look weird */
+.reveal-no-transform {
+    opacity: 0;
+    -webkit-animation: reveal-animation-no-transform var(--duration, 1s) forwards;
+    -moz-animation: reveal-animation-no-transform var(--duration, 1s) forwards;
+    -o-animation: reveal-animation-no-transform var(--duration, 1s) forwards;
+    animation: reveal-animation-no-transform var(--duration, 1s) forwards;
+}
+
+@keyframes reveal-animation-no-transform {
+    14% {
         opacity: 0;
     }
     100% {
@@ -361,8 +371,8 @@ a:not(:hover) {
     }
 }
 
-@-webkit-keyframes cssAnimation {
-    34% {
+@-webkit-keyframes reveal-animation-no-transform {
+    14% {
         opacity: 0;
     }
     100% {
