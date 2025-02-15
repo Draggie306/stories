@@ -228,7 +228,7 @@ a:not(:hover) {
     }
 }
 
-/*                       3.1 -- specific for footer section */
+/*                       3.1 -- specific for footer section -- Credit to https://epicbootstrap.com/snippets/footer-basic */
 .footer-basic {
     padding: 20px 0;
     color: #201f1f;
@@ -266,7 +266,6 @@ a:not(:hover) {
     margin: auto;
 }
 
-/* Credit to https://epicbootstrap.com/snippets/footer-basic */
 
 /* 4.1 -- stories page specific styles */
 
