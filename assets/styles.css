@@ -1,3 +1,9 @@
+/* (c) 2025, by github/draggie306 & iBaguette
+ * 100% of this was written by me, except where sepcifically noted and credited.
+ * if you make something cool with this, let me know :)
+/*
+
+
 /* 1.1 -- generic styles */
 
 html, body {
@@ -168,8 +174,9 @@ section {
     text-align: center;
 }
 
-h1 .story-title {
+.story-title {
     font-family: 'Perfecto Calligraphy', cursive;
+    margin-bottom: 0px; /* enforces a smaller gap to between the title and text below to reduce ambiguity */
 }
 
 h1 a {
@@ -193,7 +200,7 @@ a:not(:hover) {
 }
 
 .story-start-preview {
-    font-size: 0.9em;
+    font-size: 0.98em;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: italic;
@@ -203,6 +210,7 @@ a:not(:hover) {
     text-align: center;
     margin: 0 auto;
     padding: 0 20px;
+    margin-bottom: 1.5em; /* separation from the story below */
 }
 
 .drawn-path {
