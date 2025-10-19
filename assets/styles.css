@@ -16,6 +16,18 @@ html, body {
     scroll-behavior: smooth;
 
     user-select: none;
+
+    /* Kill scrollbar. */
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox, Safari 18.2+, Chromium 121+ */
+
+    ::-webkit-scrollbar {
+        display: none;
+        /* Older Safari and Chromium */
+    }
 }
 
 .container-landing {
@@ -388,3 +400,42 @@ a:not(:hover) {
         opacity: 1;
     }
 }
+
+
+
+/* Cool web tech: view transitions */
+
+@view-transition {
+    navigation: auto;
+}
+
+
+/* 
+@keyframes move-out {
+    from {
+        transform: translateY(0%);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes move-in {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+Apply the custom animation to the old and new page states 
+::view-transition-old(root) {
+    animation: 0.4s ease-in both move-out;
+}
+
+::view-transition-new(root) {
+    animation: 0.4s ease-in both move-in;
+} */
