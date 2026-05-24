@@ -373,7 +373,7 @@ a:not(:hover) {
         padding-right: calc(15px + (300vw - 700px) * (-15) / -300);
         padding-left: calc(15px + (300vw - 700px) * (-15) / -300);
     }
-};
+}
 
 /*
  * cool reveal 
