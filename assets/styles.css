@@ -219,6 +219,7 @@ h1 a {
     text-decoration: underline;
     font-size: 2em;
     text-align: center;
+    display: inline-block;
 }
 
 h1 a:hover {
@@ -231,7 +232,6 @@ a:not(:hover) {
     color: #929292;
     font-size: default;
     transition: 0.5s ease;
-    display: inline-block;
 }
 
 .story-start-preview {
@@ -328,7 +328,8 @@ a:not(:hover) {
 }
 
 .story-page-title {
-    font-size: 6em;
+    font-size: 5em;
+    line-height: 1.2em;
     font-family: 'Perfecto Calligraphy', cursive;
     text-align: center;
     padding: 0;
@@ -381,7 +382,6 @@ a:not(:hover) {
 
 .story-page-content {
     font-size: 1.3em;
-    text-align: left;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Alegreya Sans', Calibri, 'Trebuchet MS', sans-serif;
     font-style: italic;
     color: #f0f0f0;
